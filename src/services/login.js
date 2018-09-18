@@ -12,3 +12,9 @@ export function Login(payload){
     }
     return request(loginUrl, options)
 }
+
+export function fetchAdminIndex(){
+    const url = "/admin/index"
+    
+    return request(url, {})
+}

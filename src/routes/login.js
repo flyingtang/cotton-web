@@ -16,10 +16,12 @@ class LoginForm extends React.Component {
       }
 
       const res = await services.Login(values);
-      if (res && res.message){
+      if (res && res.message && res.token){
+        localStorage.setItem("token", res.token)
         message.success(res.message)
         // 重定向到登录首页
-        this.props.dispatch({type: `${key}/redirect`})
+        const url = "/admin/"
+        this.props.dispatch({type: `${key}/redirect`, payload: {url}})
       }
     });
   }

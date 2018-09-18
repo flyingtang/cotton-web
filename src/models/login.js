@@ -14,8 +14,10 @@ export default {
   
     effects: {
       *redirect ({ payload }, { put }) {
-        console.log("jinlaile ")
-        yield put(routerRedux.push('/'));
+        
+        console.log("jinlaile ", payload)
+        const url = payload.url
+        yield put(routerRedux.push(url));
       },
     },
   

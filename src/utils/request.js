@@ -1,6 +1,7 @@
 import fetch from 'dva/fetch';
 import path from 'path'
 import {message} from "antd"
+import { routerRedux } from 'dva/router';
 
 const version = "/api/v1"
 
@@ -8,9 +9,16 @@ const version = "/api/v1"
 
 
 async function handleStatus(response) {
+  console.log(response, "====")
 
   if (response.status >= 200 && response.status < 300) {
      return response.json();
+  }else if (response.status == 301 && response.redirected){
+    console.log("12212")
+      const xx = await response.json()
+      console.log(xx)
+      return
+      // routerRedux.push()
   }
 
   const res = await response.json()
@@ -33,6 +41,10 @@ export default function request(url, options) {
   url = path.join(version, url)
   options.body = JSON.stringify(options.body)
   options = Object.assign(options, { headers: { 'Content-Type': 'application/json' }})
-  console.log(url, options)
+  // const token = localStorage.getItem("token")
+  // if (token)  {
+  //    options.Authentication = token
+  // }
+  // console.log(url, options)
   return fetch(url, options).then(handleStatus)
 }

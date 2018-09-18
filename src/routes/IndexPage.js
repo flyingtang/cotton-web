@@ -10,6 +10,7 @@ function IndexPage() {
       <ul className={styles.list}>
         <li>To get started, edit <code>src/index.js</code> and save to reload.</li>
         <li><a href="https://github.com/dvajs/dva-docs/blob/master/v1/en-us/getting-started.md">Getting Started</a></li>
+        <li><a href="/api/v1/admin/index">xxxxx</a></li>
       </ul>
     </div>
   );

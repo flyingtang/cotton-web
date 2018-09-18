@@ -1,8 +1,10 @@
 import dva from 'dva';
 import './index.css';
 
+
+const ERROR_MSG_DURATION = 3
 // 1. Initialize
-const app = dva();
+const app = dva()
 
 // 2. Plugins
 // app.use({});
